@@ -181,10 +181,11 @@ func (cp *Processor) loadFromFile(config interfaces.Configuration) error {
 	configFileName := environment.GetConfigFileName(cp.Logger, cp.flags.ConfigFileName())
 
 	filePath := configDir + "/" + profileDir + configFileName
+	cp.Logger.Info(fmt.Sprintf("Trying to load configuration from %s", filePath))
 
 	contents, err := ioutil.ReadFile(filePath)
 	if err != nil {
-		return fmt.Errorf("could not load configuration file (%s): %s", filePath, err.Error())
+		return fmt.Errorf("could not load configuration file (%s) (%s): %s", configDi, filePath, err.Error())
 	}
 	if err = toml.Unmarshal(contents, config); err != nil {
 		return fmt.Errorf("could not load configuration file (%s): %s", filePath, err.Error())

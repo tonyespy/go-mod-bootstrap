@@ -1,4 +1,4 @@
-module github.com/edgexfoundry/go-mod-bootstrap
+module github.com/tonyespy/go-mod-bootstrap
 
 require (
 	github.com/BurntSushi/toml v0.3.1
